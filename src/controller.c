@@ -1,16 +1,12 @@
 #include "controller.h"
+#include "alarm.h"
 
 void controller_sample(controller_t *c, sample_t s) {
-    if (s.temperature >= 3000){
-        c->alarm = 1;
-    } 
-    else if (s.temperature <= 2800) {
-        c->alarm = 0;
-    }
+    c->alarm = alarm_update(c->alarm, s.temperature);
 
     /* 
     Drop newest
-    Peserve queued samples. 
+    Preserve queued samples.
     Alarm still updates.
      */
     if (c->count == QUEUE_CAPACITY) {

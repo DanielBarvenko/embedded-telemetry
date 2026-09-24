@@ -1,0 +1,32 @@
+name: Zephyr ARM emulator
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qemu:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Host dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends build-essential python3-venv python3-dev wget xz-utils file
+      - name: Install pinned Zephyr and ARM SDK
+        run: bash scripts/setup_zephyr.sh
+      - name: Cross-compile Cortex-M3 firmware
+        run: bash scripts/build_rtos.sh
+      - name: Run and verify QEMU trace
+        run: bash scripts/run_rtos.sh
+      - name: Retain emulator log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cortex-m3-trace
+          path: |
+            build/rtos/qemu.log
+            build/rtos/frames.bin
+          if-no-files-found: ignore

@@ -1,0 +1,10 @@
+*** Booting Zephyr OS build v4.2.0 ***
+TELEMETRY RTOS demo: capacity=4 sample_ms=100 consumer_ms=250
+FRAME seq=0 temp=2500 alarm=0 hex=a55a010000c409e4f0
+FRAME seq=1 temp=2950 alarm=0 hex=a55a010100860bbccd
+FRAME seq=2 temp=3100 alarm=1 hex=a55a0102001c0ca7d1
+FRAME seq=3 temp=2900 alarm=1 hex=a55a010300540b9153
+FRAME seq=6 temp=3200 alarm=1 hex=a55a010600800cd046
+FRAME seq=8 temp=2800 alarm=0 hex=a55a010800f00a158c
+FRAME seq=10 temp=2850 alarm=1 hex=a55a010a00220b1902
+SUMMARY generated=12 accepted=7 dropped=5 transmitted=7 alarm=0 status=PASS
