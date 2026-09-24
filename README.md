@@ -46,4 +46,3 @@ make sanitize
 CI runs both commands. 
 `make clean && make test` returns to an ordinary build.
 Do not compile them with NDEBUG. 
-See `NEXT_STEPS.md` for extensions and discussion prompts. 
